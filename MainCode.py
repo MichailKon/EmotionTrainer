@@ -12,4 +12,4 @@ class MyClass:
 
 mc = MyClass()
 mc.add(1)
-mc.get(0)
+print(mc.get(0))
