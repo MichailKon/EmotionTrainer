@@ -1,5 +1,23 @@
-from MyClass import MyClass
+from PySide2 import QtCore, QtGui, QtWidgets
+import sys
+from inter import Ui_Form
 
-mc = MyClass()
-mc.add(1)
-print(mc.get(0))
+
+if __name__ == "__main__":
+    # create app
+    app = QtWidgets.QApplication(sys.argv)
+
+    # create form
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
+
+    # logic
+    def bp():
+        ui.textEdit.setText("Произошел Тык")
+
+    ui.pushButton.clicked.connect(bp)
+
+    # launch
+    sys.exit(app.exec_())
