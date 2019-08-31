@@ -1,5 +1,5 @@
-CASCADE_PATH = r'C:\PycharmProjects\face_detector.xml'
+CASCADE_PATH = r'face_detector.xml'
 IMG_SIZE = 48
-MODEL_PATH = r'C:\PycharmProjects\model'
+MODEL_PATH = r'model'
 CLASSES = ('Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral')
 CNT_CLASSES = 7
