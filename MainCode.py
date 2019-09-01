@@ -7,34 +7,46 @@ from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 from keras.models import load_model
 
+import MainInterface as MainI
+import RecognitionAppInterface as RecognitionAI
 from constants import *
-from inter import Ui_Form
 
 
-class App(QtWidgets.QWidget):
-    def __init__(self):
-        super().__init__()
-        self.faceCascade = cv2.CascadeClassifier(CASCADE_PATH)
-        self.ui = Ui_Form()
-        self.model = load_model(MODEL_PATH)
+class EmotionRecognitionApp(QtWidgets.QWidget):
+    model = load_model(MODEL_PATH)
+    faceCascade = cv2.CascadeClassifier(CASCADE_PATH)
+
+    def __init__(self, parent=None):
+        super().__init__(parent, QtCore.Qt.Window)
+        self.ui = RecognitionAI.Ui_Form()
         self.ui.setupUi(self)
-
-        self.ui.Start_recognition.clicked.connect(self.bp)
-        self.ui.Result.setText('')
-        self.ui.user_input.setReadOnly(True)
-        self.ui.user_answered.clicked.connect(self.recognize_emotion)
+        self.is_opened_main = None
         self.faces = []
         self.frame = None
+        self.cam = None
+
+        self.ui.Start_recognition.clicked.connect(self.bp)
+        self.ui.ToMainWindow.clicked.connect(self.open_main)
+        self.ui.user_answered.clicked.connect(self.recognize_emotion)
+
+        self.ui.Result.setText('')
+        self.ui.user_input.setReadOnly(True)
         self.ui.Result.setAlignment(QtCore.Qt.AlignCenter)
         self.ui.user_input.setAlignment(QtCore.Qt.AlignCenter)
+        self.ui.user_answered.setEnabled(False)
 
     def bp(self):
-        cam = cv2.VideoCapture(0)
+        # After this user can't writing anything in that place
+        self.ui.Result.setText('')
+        self.ui.user_answered.setEnabled(False)
+        self.ui.user_input.setReadOnly(True)
+        self.ui.user_input.setText('')
+        # Recognizing emotion
+        self.cam = cv2.VideoCapture(0)
         good = [ord(i) for i in ['q', 'Q', ' ', 'й', 'Й']]
-        while cam.isOpened():
-            ret, frame = cam.read()
-            if any([cv2.waitKey(1) == i for i in good]):
-                cv2.destroyAllWindows()
+        while self.cam and self.cam.isOpened():
+            ret, frame = self.cam.read()
+            if not self.cam or any([cv2.waitKey(1) == i for i in good]):
                 break
             faces = self.faceCascade.detectMultiScale(frame, scaleFactor=1.1, minNeighbors=5, minSize=(40, 40))
             num = 1
@@ -51,10 +63,11 @@ class App(QtWidgets.QWidget):
             bytesPerLine = ch * w
             convertToQtFormat = QtGui.QImage(rgbImage.data, w, h, bytesPerLine, QtGui.QImage.Format_RGB888)
             self.ui.Image.setPixmap(QtGui.QPixmap(convertToQtFormat))
-        cam.release()
-        del cam
+        self.cam = None
         self.ui.Result.setText('Введите номер вашего лица')
         self.ui.user_input.setReadOnly(False)
+        self.ui.user_answered.setEnabled(True)
+        cv2.destroyWindow('Video')
 
     def recognize_emotion(self):
         pattern = r"\d+"
@@ -76,9 +89,33 @@ class App(QtWidgets.QWidget):
         predictions = [i[0] for i in predictions]
         self.ui.Result.setText(",".join(predictions))
 
+    def open_main(self):
+        self.close()
+        self.cam = None
+        if not self.is_opened_main:
+            self.is_opened_main = MainWindowApp(self)
+        self.is_opened_main.show()
+
+
+class MainWindowApp(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent, QtCore.Qt.Window)
+        self.ui = MainI.Ui_Form()
+        self.ui.setupUi(self)
+
+        self.is_opened_recognition = None
+
+        self.ui.pushButton.clicked.connect(self.open_recognition)
+
+    def open_recognition(self):
+        self.close()
+        if not self.is_opened_recognition:
+            self.is_opened_recognition = EmotionRecognitionApp(self)
+        self.is_opened_recognition.show()
+
 
 if __name__ == "__main__":
     app1 = QtWidgets.QApplication(sys.argv)
-    win = App()
-    win.show()
+    ERA = MainWindowApp()
+    ERA.show()
     sys.exit(app1.exec())
