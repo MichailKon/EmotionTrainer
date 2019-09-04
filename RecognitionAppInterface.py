@@ -76,4 +76,4 @@ class Ui_Form(object):
         self.Start_recognition.setText(_translate("Form", "Начать распознавание"))
         self.Result.setText(_translate("Form", "TextLabel"))
         self.user_answered.setText(_translate("Form", "OK"))
-        self.ToMainWindow.setText(_translate("Form", "back"))
+        self.ToMainWindow.setText(_translate("Form", "Back"))

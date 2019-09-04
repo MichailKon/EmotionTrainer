@@ -14,9 +14,14 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(400, 300)
-        self.pushButton = QtWidgets.QPushButton(Form)
-        self.pushButton.setGeometry(QtCore.QRect(120, 180, 131, 51))
-        self.pushButton.setObjectName("pushButton")
+        self.ToSecondTrainer = QtWidgets.QPushButton(Form)
+        self.ToSecondTrainer.setGeometry(QtCore.QRect(120, 180, 131, 51))
+        self.ToSecondTrainer.setObjectName("ToSecondTrainer")
+        self.comboBox = QtWidgets.QComboBox(Form)
+        self.comboBox.setGeometry(QtCore.QRect(290, 20, 73, 22))
+        self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -24,4 +29,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.pushButton.setText(_translate("Form", "Второй тренажер"))
+        self.ToSecondTrainer.setText(_translate("Form", "Второй тренажер"))
+        self.comboBox.setCurrentText(_translate("Form", "Русский"))
+        self.comboBox.setItemText(0, _translate("Form", "Русский"))
+        self.comboBox.setItemText(1, _translate("Form", "English"))

@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="ToSecondTrainer">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -25,6 +25,29 @@
    <property name="text">
     <string>Второй тренажер</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>20</y>
+     <width>73</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="currentText">
+    <string>Русский</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>Русский</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>English</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>
