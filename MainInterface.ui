@@ -16,38 +16,101 @@
   <widget class="QPushButton" name="ToSecondTrainer">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>180</y>
-     <width>131</width>
-     <height>51</height>
+     <x>100</x>
+     <y>160</y>
+     <width>199</width>
+     <height>50</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>50</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+  rgb(170, 255, 127);
+}
+</string>
    </property>
    <property name="text">
     <string>Второй тренажер</string>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>20</width>
+     <height>20</height>
+    </size>
+   </property>
   </widget>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QPushButton" name="ToFirstTrainer">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>20</y>
-     <width>73</width>
-     <height>22</height>
+     <x>100</x>
+     <y>70</y>
+     <width>199</width>
+     <height>50</height>
     </rect>
    </property>
-   <property name="currentText">
-    <string>Русский</string>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>50</height>
+    </size>
    </property>
-   <item>
-    <property name="text">
-     <string>Русский</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>English</string>
-    </property>
-   </item>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string>Первый тренажер</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Language">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>20</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
   </widget>
  </widget>
  <resources/>

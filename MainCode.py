@@ -1,4 +1,3 @@
-import re
 import sys
 
 import cv2
@@ -34,9 +33,8 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
         self.ui.user_answered.clicked.connect(self.recognize_emotion)
         # Making form
         self.ui.Result.setText('')
-        self.ui.user_input.setReadOnly(True)
+        self.ui.UserInput.setReadOnly(True)
         self.ui.Result.setAlignment(QtCore.Qt.AlignCenter)
-        self.ui.user_input.setAlignment(QtCore.Qt.AlignCenter)
         self.ui.user_answered.setEnabled(False)
 
     def translating(self):
@@ -47,8 +45,7 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
         # After this user can't writing anything in that place
         self.ui.Result.setText('')
         self.ui.user_answered.setEnabled(False)
-        self.ui.user_input.setReadOnly(True)
-        self.ui.user_input.setText('')
+        self.ui.UserInput.setReadOnly(True)
 
         # Recognizing emotion
         self.cam = cv2.VideoCapture(0)
@@ -74,16 +71,12 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
         self.cam.release()
         # Making interface available
         self.ui.Result.setText(WORDS[language]['Введите номер вашего лица'])
-        self.ui.user_input.setReadOnly(False)
+        self.ui.UserInput.setReadOnly(False)
         self.ui.user_answered.setEnabled(True)
         cv2.destroyWindow('Video')
 
     def recognize_emotion(self):
-        pattern = r"\d+"
-        if not re.fullmatch(pattern, self.ui.user_input.text().strip()):
-            self.ui.Result.setText(WORDS[language]['Ваш текст либо пустой,\n либо содержит не только цифры!'])
-            return None
-        number = int(self.ui.user_input.text())
+        number = int(self.ui.UserInput.text())
         number -= 1
         if not (0 <= number < len(self.faces)):
             self.ui.Result.setText(WORDS[language]['Такого лица нет!'])
@@ -115,13 +108,16 @@ class MainWindowApp(QtWidgets.QWidget):
         self.ui.setupUi(self)
         self.is_opened_recognition = None
         # Connecting buttons
-        self.ui.comboBox.setCurrentIndex(ind)
         self.ui.ToSecondTrainer.clicked.connect(self.open_recognition)
-        self.ui.comboBox.currentTextChanged.connect(self.translating)
+        self.ui.Language.clicked.connect(self.translating)
+        self.ui.Language.setIcon(QtGui.QIcon(r'C:\Users\Student\Downloads\Eng.png'))
+        self.ui.Language.setIconSize(QtCore.QSize(45, 45))
 
     def translating(self):
         global language, ind
-        language, ind = LANGUAGES[self.ui.comboBox.currentIndex()], self.ui.comboBox.currentIndex()
+        language, ind = LANGUAGES[not ind], not ind
+
+        # language, ind = LANGUAGES[self.ui.Language.currentIndex()], 0
         if self.is_opened_recognition:
             self.is_opened_recognition.translating()
 

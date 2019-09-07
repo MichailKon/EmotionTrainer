@@ -10,6 +10,8 @@ WORDS['en'], WORDS['ru'] = dict(), dict()
 
 WORDS['en']['Second trainer'] = WORDS['en']['Второй тренажер'] = 'Second trainer'
 WORDS['ru']['Second trainer'] = WORDS['ru']['Второй тренажер'] = 'Второй тренажер'
+WORDS['en']['First trainer'] = WORDS['en']['Первый тренажер'] = 'First trainer'
+WORDS['ru']['First trainer'] = WORDS['ru']['Первый тренажер'] = 'First тренажер'
 WORDS['en']['Начать распознавание'] = WORDS['en']['Start recognition'] = 'Start recognition'
 WORDS['ru']['Начать распознавание'] = WORDS['ru']['Start recognition'] = 'Начать распознавание'
 WORDS['en']['Back'] = WORDS['en']['Назад'] = 'Back'
