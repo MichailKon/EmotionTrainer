@@ -3,6 +3,8 @@ IMG_SIZE = 48
 MODEL_PATH = r'model'
 CLASSES = {'en': ('Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprised', 'Neutral'),
            'ru': ('Злость', 'Отвращение', 'Страх', 'Счастье', 'Печаль', 'Удивление', 'Нейтральность')}
+TABLE_NAMES = {'en': ('Image', 'True answer', 'Your answer', 'Time'),
+               'ru': ('Фото', 'Правильный ответ', 'Ваш ответ', 'Время')}
 CNT_CLASSES = 7
 LANGUAGES = ('ru', 'en')
 WORDS = dict()
@@ -30,3 +32,9 @@ WORDS['en']['Right'] = WORDS['en']['Правильно'] = 'Right'
 WORDS['ru']['Right'] = WORDS['ru']['Правильно'] = 'Правильно'
 WORDS['en']['Wrong'] = WORDS['en']['Неправильно'] = 'Неправильно'
 WORDS['ru']['Wrong'] = WORDS['ru']['Неправильно'] = 'Неправильно'
+WORDS['en']['Choose an emotion'] = WORDS['en']['Выберите эмоцию'] = 'Choose an emotion'
+WORDS['ru']['Choose an emotion'] = WORDS['ru']['Выберите эмоцию'] = 'Выберите эмоцию'
+WORDS['en']['Check'] = WORDS['en']['Проверить'] = 'Check'
+WORDS['ru']['Check'] = WORDS['ru']['Проверить'] = 'Проверить'
+WORDS['en']['Show a photo'] = WORDS['en']['Показать фото'] = 'Show a photo'
+WORDS['ru']['Show a photo'] = WORDS['ru']['Показать фото'] = 'Показать фото'

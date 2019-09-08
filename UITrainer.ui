@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="SetNextFace">
    <property name="geometry">
     <rect>
      <x>780</x>
@@ -183,7 +183,7 @@ QPushButton:pressed
     <string/>
    </property>
   </widget>
-  <widget class="QGroupBox" name="Emotions">
+  <widget class="QGroupBox" name="Emotion">
    <property name="geometry">
     <rect>
      <x>780</x>
@@ -211,7 +211,7 @@ QPushButton:pressed
 }</string>
    </property>
    <property name="title">
-    <string>Выберете эмоцию</string>
+    <string>Выберите эмоцию</string>
    </property>
    <property name="flat">
     <bool>false</bool>
@@ -219,7 +219,7 @@ QPushButton:pressed
    <property name="checkable">
     <bool>false</bool>
    </property>
-   <widget class="QRadioButton" name="radioButton">
+   <widget class="QRadioButton" name="Angry">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -253,7 +253,7 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_2">
+   <widget class="QRadioButton" name="Disgust">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -287,7 +287,7 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_3">
+   <widget class="QRadioButton" name="Fear">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -321,7 +321,7 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_4">
+   <widget class="QRadioButton" name="Happy">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -355,7 +355,7 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_5">
+   <widget class="QRadioButton" name="Sad">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -389,7 +389,7 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_6">
+   <widget class="QRadioButton" name="Surprised">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -411,7 +411,7 @@ QPushButton:pressed
      <enum>Qt::LeftToRight</enum>
     </property>
     <property name="text">
-     <string>Surprise</string>
+     <string>Surprised</string>
     </property>
     <property name="iconSize">
      <size>
@@ -423,7 +423,7 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_7">
+   <widget class="QRadioButton" name="Neutral">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -458,7 +458,7 @@ QPushButton:pressed
     </property>
    </widget>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="ToMainWindow">
    <property name="geometry">
     <rect>
      <x>860</x>
@@ -485,6 +485,19 @@ QPushButton:pressed
    </property>
    <property name="text">
     <string>Back</string>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="Progress">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>761</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>24</number>
    </property>
   </widget>
  </widget>
