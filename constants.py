@@ -1,7 +1,7 @@
 CASCADE_PATH = r'face_detector.xml'
 IMG_SIZE = 48
 MODEL_PATH = r'model'
-CLASSES = {'en': ('Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprise', 'Neutral'),
+CLASSES = {'en': ('Angry', 'Disgust', 'Fear', 'Happy', 'Sad', 'Surprised', 'Neutral'),
            'ru': ('Злость', 'Отвращение', 'Страх', 'Счастье', 'Печаль', 'Удивление', 'Нейтральность')}
 CNT_CLASSES = 7
 LANGUAGES = ('ru', 'en')
@@ -11,7 +11,7 @@ WORDS['en'], WORDS['ru'] = dict(), dict()
 WORDS['en']['Second trainer'] = WORDS['en']['Второй тренажер'] = 'Second trainer'
 WORDS['ru']['Second trainer'] = WORDS['ru']['Второй тренажер'] = 'Второй тренажер'
 WORDS['en']['First trainer'] = WORDS['en']['Первый тренажер'] = 'First trainer'
-WORDS['ru']['First trainer'] = WORDS['ru']['Первый тренажер'] = 'First тренажер'
+WORDS['ru']['First trainer'] = WORDS['ru']['Первый тренажер'] = 'Первый тренажер'
 WORDS['en']['Начать распознавание'] = WORDS['en']['Start recognition'] = 'Start recognition'
 WORDS['ru']['Начать распознавание'] = WORDS['ru']['Start recognition'] = 'Начать распознавание'
 WORDS['en']['Back'] = WORDS['en']['Назад'] = 'Back'
@@ -26,3 +26,7 @@ WORDS['en']['There is no such face!'] = WORDS['en']['Такого лица не�
 WORDS['ru']['Такого лица нет!'] = WORDS['ru']['There is no such face!'] = 'Такого лица нет!'
 WORDS['en']['Enter number of your face'] = WORDS['en']['Введите номер вашего лица'] = 'Enter number of your face'
 WORDS['ru']['Введите номер вашего лица'] = WORDS['ru']['Enter number of your face'] = 'Введите номер вашего лица'
+WORDS['en']['Right'] = WORDS['en']['Правильно'] = 'Right'
+WORDS['ru']['Right'] = WORDS['ru']['Правильно'] = 'Правильно'
+WORDS['en']['Wrong'] = WORDS['en']['Неправильно'] = 'Неправильно'
+WORDS['ru']['Wrong'] = WORDS['ru']['Неправильно'] = 'Неправильно'

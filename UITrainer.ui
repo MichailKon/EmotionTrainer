@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QComboBox" name="comboBox">
+  <widget class="QComboBox" name="Emotion">
    <property name="geometry">
     <rect>
      <x>440</x>
@@ -73,7 +73,7 @@
     </property>
    </item>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="ToMainWindow">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -104,8 +104,34 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>411</width>
-     <height>351</height>
+     <width>400</width>
+     <height>350</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SetNextFace">
+   <property name="geometry">
+    <rect>
+     <x>462</x>
+     <y>397</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="IsUserRight">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>350</y>
+     <width>81</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">

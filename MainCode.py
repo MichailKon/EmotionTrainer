@@ -1,3 +1,5 @@
+import os
+import random
 import sys
 
 import cv2
@@ -6,8 +8,9 @@ from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 from keras.models import load_model
 
-import MainInterface as MainI
+import MainAppInterface as MainAI
 import RecognitionAppInterface as RecognitionAI
+import UITrainer as UserRecognizesAI
 from constants import *
 
 language = 'ru'
@@ -15,9 +18,6 @@ ind = 0
 
 
 class EmotionRecognitionApp(QtWidgets.QWidget):
-    model = load_model(MODEL_PATH)
-    faceCascade = cv2.CascadeClassifier(CASCADE_PATH)
-
     def __init__(self, parent=None):
         # All variables
         super().__init__(parent)
@@ -27,6 +27,8 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
         self.faces = []
         self.frame = None
         self.cam = None
+        self.model = load_model(MODEL_PATH)
+        self.faceCascade = cv2.CascadeClassifier(CASCADE_PATH)
         # Connecting buttons
         self.ui.Start_recognition.clicked.connect(self.open_window_with_recognition)
         self.ui.ToMainWindow.clicked.connect(self.open_main)
@@ -43,6 +45,7 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
 
     def open_window_with_recognition(self):
         # After this user can't writing anything in that place
+        self.ui.Start_recognition.setEnabled(False)
         self.ui.Result.setText('')
         self.ui.user_answered.setEnabled(False)
         self.ui.UserInput.setReadOnly(True)
@@ -74,6 +77,7 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
         self.ui.UserInput.setReadOnly(False)
         self.ui.user_answered.setEnabled(True)
         cv2.destroyWindow('Video')
+        self.ui.Start_recognition.setEnabled(True)
 
     def recognize_emotion(self):
         number = int(self.ui.UserInput.text())
@@ -96,38 +100,93 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
             self.cam.release()
         if not self.is_opened_main:
             self.is_opened_main = MainWindowApp()
+        self.is_opened_main.translating()
         self.is_opened_main.show()
         self.hide()
+
+
+def swap_language():
+    global language, ind
+    language, ind = LANGUAGES[not ind], not ind
+    if ERA is not None:
+        ERA.translating()
 
 
 class MainWindowApp(QtWidgets.QWidget):
     def __init__(self, parent=None):
         # All variables
         super().__init__(parent)
-        self.ui = MainI.Ui_Form()
+        self.ui = MainAI.Ui_Form()
         self.ui.setupUi(self)
         self.is_opened_recognition = None
+        self.is_opened_recognizes = None
         # Connecting buttons
         self.ui.ToSecondTrainer.clicked.connect(self.open_recognition)
-        self.ui.Language.clicked.connect(self.translating)
-        self.ui.Language.setIcon(QtGui.QIcon(r'C:\Users\Student\Downloads\Eng.png'))
+        self.ui.Language.clicked.connect(swap_language)
+        self.ui.ToFirstTrainer.clicked.connect(self.open_rezognizes)
+        self.ui.Language.setIcon(QtGui.QIcon(r'Eng.png'))
         self.ui.Language.setIconSize(QtCore.QSize(45, 45))
 
     def translating(self):
-        global language, ind
-        language, ind = LANGUAGES[not ind], not ind
-
-        # language, ind = LANGUAGES[self.ui.Language.currentIndex()], 0
         if self.is_opened_recognition:
             self.is_opened_recognition.translating()
-
+        if self.is_opened_recognizes:
+            self.is_opened_recognizes.translating()
         self.ui.ToSecondTrainer.setText(WORDS[language][self.ui.ToSecondTrainer.text()])
+        self.ui.ToFirstTrainer.setText(WORDS[language][self.ui.ToFirstTrainer.text()])
 
     def open_recognition(self):
         if not self.is_opened_recognition:
             self.is_opened_recognition = EmotionRecognitionApp()
-            self.is_opened_recognition.translating()
+        self.is_opened_recognition.translating()
         self.is_opened_recognition.show()
+        self.hide()
+
+    def open_rezognizes(self):
+        if not self.is_opened_recognizes:
+            self.is_opened_recognizes = UserRecognizesApp()
+            self.is_opened_recognizes.next_image()
+        self.is_opened_recognizes.translating()
+        self.is_opened_recognizes.show()
+        self.hide()
+
+
+class UserRecognizesApp(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        # All variables
+        super().__init__(parent)
+        self.now_emotion = None
+        self.ui = UserRecognizesAI.Ui_Dialog()
+        self.ui.setupUi(self)
+        self.is_opened_main = None
+        # Connecting buttons
+        self.ui.SetNextFace.clicked.connect(self.next_image)
+        self.ui.ToMainWindow.clicked.connect(self.to_main_window)
+
+    def translating(self):
+        self.ui.ToMainWindow = WORDS[language][self.ui.ToMainWindow.text()]
+        self.ui.Emotion.clear()
+        self.ui.Emotion.addItems(CLASSES[language])
+
+    def next_image(self):
+        if self.ui.Emotion.currentText() != '':
+            answer = self.ui.Emotion.currentIndex()
+            user_choice = CLASSES['en'][answer]
+        if self.ui.Image.pixmap() is not None:
+            self.ui.IsUserRight.setText("Right" if user_choice == self.now_emotion else "Wrong")
+        self.now_emotion = random.choice(CLASSES['en'])
+        cnt_photos = len(os.listdir(os.path.join(os.getcwd(), 'Emotions', self.now_emotion)))
+        num_emotion = str(random.randint(1, cnt_photos))
+        path_to_image = os.path.join(os.getcwd(), 'Emotions', self.now_emotion, self.now_emotion + num_emotion + '.jpg')
+        image = QtGui.QPixmap(path_to_image)
+        image = image.scaled(QtCore.QSize(400, 350))
+        self.ui.Image.setPixmap(image)
+
+    def to_main_window(self):
+        if not self.is_opened_main:
+            self.is_opened_main = MainWindowApp()
+        self.is_opened_main.translating()
+        self.is_opened_main.show()
         self.hide()
 
 
