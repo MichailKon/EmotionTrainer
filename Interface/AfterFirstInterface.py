@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'AfterFirstInterface.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.1
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -12,9 +13,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(663, 529)
+        Form.resize(681, 524)
         self.Statistics = QtWidgets.QTableWidget(Form)
-        self.Statistics.setGeometry(QtCore.QRect(10, 10, 631, 411))
+        self.Statistics.setGeometry(QtCore.QRect(10, 10, 641, 411))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(12)
+        self.Statistics.setFont(font)
         self.Statistics.setRowCount(10)
         self.Statistics.setColumnCount(4)
         self.Statistics.setObjectName("Statistics")
@@ -31,13 +36,21 @@ class Ui_Form(object):
         self.Statistics.horizontalHeader().setDefaultSectionSize(150)
         self.Statistics.verticalHeader().setHighlightSections(True)
         self.ToMainWindow = QtWidgets.QPushButton(Form)
-        self.ToMainWindow.setGeometry(QtCore.QRect(40, 460, 131, 51))
+        self.ToMainWindow.setGeometry(QtCore.QRect(40, 450, 131, 51))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(12)
+        self.ToMainWindow.setFont(font)
         self.ToMainWindow.setObjectName("ToMainWindow")
         self.ToAfterFirst = QtWidgets.QPushButton(Form)
-        self.ToAfterFirst.setGeometry(QtCore.QRect(430, 460, 131, 51))
+        self.ToAfterFirst.setGeometry(QtCore.QRect(470, 450, 131, 51))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(12)
+        self.ToAfterFirst.setFont(font)
         self.ToAfterFirst.setObjectName("ToAfterFirst")
         self.Image = QtWidgets.QLabel(Form)
-        self.Image.setGeometry(QtCore.QRect(20, 30, 400, 350))
+        self.Image.setGeometry(QtCore.QRect(130, 40, 400, 350))
         self.Image.setText("")
         self.Image.setObjectName("Image")
 
@@ -57,5 +70,3 @@ class Ui_Form(object):
         item.setText(_translate("Form", "Time"))
         self.ToMainWindow.setText(_translate("Form", "Back"))
         self.ToAfterFirst.setText(_translate("Form", "Back"))
-
-

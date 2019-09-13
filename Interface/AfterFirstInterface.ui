@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>663</width>
-    <height>529</height>
+    <width>681</width>
+    <height>524</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,9 +18,15 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>631</width>
+     <width>641</width>
      <height>411</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="rowCount">
     <number>10</number>
@@ -75,10 +81,16 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>460</y>
+     <y>450</y>
      <width>131</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Back</string>
@@ -87,11 +99,17 @@
   <widget class="QPushButton" name="ToAfterFirst">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>460</y>
+     <x>470</x>
+     <y>450</y>
      <width>131</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Back</string>
@@ -100,8 +118,8 @@
   <widget class="QLabel" name="Image">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>30</y>
+     <x>130</x>
+     <y>40</y>
      <width>400</width>
      <height>350</height>
     </rect>
