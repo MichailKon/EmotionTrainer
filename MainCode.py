@@ -8,11 +8,12 @@ import numpy as np
 from PIL import Image
 from PyQt5 import QtCore, QtGui, QtWidgets
 from keras.models import load_model
+import pygame
 
-import MainAppInterface as MainAI
-import RecognitionAppInterface as RecognitionAI
-import UITrainer as UserRecognizesAI
-import AfterFirstInterface as AfterFirstAI
+from Interface import MainAppInterface as MainAI
+from Interface import RecognitionAppInterface as RecognitionAI
+from Interface import UITrainer as UserRecognizesAI
+from Interface import AfterFirstInterface as AfterFirstAI
 from constants import *
 
 language = 'ru'
@@ -119,11 +120,15 @@ class MainWindowApp(QtWidgets.QWidget):
         self.ui.ToSecondTrainer.clicked.connect(self.open_recognition)
         self.ui.Language.clicked.connect(self.swap_language)
         self.ui.ToFirstTrainer.clicked.connect(self.open_rezognizes)
-        self.ui.Language.setIcon(QtGui.QIcon(r'Eng.png'))
+        self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Rus.png')))
         self.ui.Language.setIconSize(QtCore.QSize(45, 45))
 
     def swap_language(self):
         global language, ind
+        if language == 'ru':
+            self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Eng.png')))
+        else:
+            self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Eng.png')))
         language, ind = LANGUAGES[not ind], not ind
         self.translating()
 
@@ -164,6 +169,8 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.last_answer = None
         self.statistics = []
         self.is_opened_statistics = None
+        self.music_filename = None
+        self.mixer = pygame.mixer
         # Connecting buttons
         self.ui.SetNextFace.clicked.connect(self.next_image)
         self.ui.ToMainWindow.clicked.connect(self.to_main_window)
@@ -182,6 +189,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.ui.Emotion.setTitle(WORDS[language][self.ui.Emotion.title()])
 
     def next_image(self):
+
         self.shown_images += 1
         user_answer = self.get_selected_button()
         if len(self.statistics) >= 1:
@@ -193,6 +201,11 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.statistics.append([])
         self.true_images += user_answer == self.now_emotion
         self.now_emotion = random.choice(CLASSES['en'])
+
+        self.mixer.init()
+        self.mixer.music.load(os.path.join(os.getcwd(), 'Music', self.now_emotion + ".mp3"))
+        self.mixer.music.play()
+
         cnt_photos = len(os.listdir(os.path.join(os.getcwd(), 'Emotions', self.now_emotion)))
         num_emotion = str(random.randint(1, cnt_photos))
         path_to_image = os.path.join(os.getcwd(), 'Emotions', self.now_emotion, self.now_emotion + num_emotion + '.jpg')
@@ -205,6 +218,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.last_answer = dt.datetime.now()
 
     def to_main_window(self):
+        self.mixer.music.stop()
         if not self.is_opened_main:
             self.is_opened_main = MainWindowApp()
         self.is_opened_main.translating()
@@ -212,6 +226,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.hide()
 
     def to_statistics(self):
+        self.mixer.music.stop()
         if not self.is_opened_statistics:
             self.is_opened_statistics = AfterFirstApp(statistics=self.statistics)
         self.is_opened_statistics.translating()
