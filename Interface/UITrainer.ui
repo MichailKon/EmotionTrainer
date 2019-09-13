@@ -186,9 +186,9 @@ QPushButton:pressed
   <widget class="QGroupBox" name="Emotion">
    <property name="geometry">
     <rect>
-     <x>780</x>
+     <x>760</x>
      <y>50</y>
-     <width>201</width>
+     <width>231</width>
      <height>401</height>
     </rect>
    </property>
@@ -428,7 +428,7 @@ QPushButton:pressed
      <rect>
       <x>10</x>
       <y>340</y>
-      <width>181</width>
+      <width>191</width>
       <height>41</height>
      </rect>
     </property>

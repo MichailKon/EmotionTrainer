@@ -128,7 +128,7 @@ class MainWindowApp(QtWidgets.QWidget):
         if language == 'ru':
             self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Eng.png')))
         else:
-            self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Eng.png')))
+            self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Rus.png')))
         language, ind = LANGUAGES[not ind], not ind
         self.translating()
 

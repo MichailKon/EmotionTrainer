@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>585</width>
-    <height>533</height>
+    <width>663</width>
+    <height>529</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>531</width>
+     <width>631</width>
      <height>411</height>
     </rect>
    </property>
@@ -35,7 +35,7 @@
     <bool>false</bool>
    </attribute>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>125</number>
+    <number>150</number>
    </attribute>
    <attribute name="verticalHeaderHighlightSections">
     <bool>true</bool>
@@ -74,7 +74,7 @@
   <widget class="QPushButton" name="ToMainWindow">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>40</x>
      <y>460</y>
      <width>131</width>
      <height>51</height>
@@ -87,7 +87,7 @@
   <widget class="QPushButton" name="ToAfterFirst">
    <property name="geometry">
     <rect>
-     <x>420</x>
+     <x>430</x>
      <y>460</y>
      <width>131</width>
      <height>51</height>
