@@ -120,12 +120,12 @@ class MainWindowApp(QtWidgets.QWidget):
         self.ui.ToSecondTrainer.clicked.connect(self.open_recognition)
         self.ui.Language.clicked.connect(self.swap_language)
         self.ui.ToFirstTrainer.clicked.connect(self.open_rezognizes)
-        self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Rus.png')))
+        self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Eng.png')))
         self.ui.Language.setIconSize(QtCore.QSize(45, 45))
 
     def swap_language(self):
         global language, ind
-        if language == 'ru':
+        if language == 'en':
             self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Eng.png')))
         else:
             self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Rus.png')))
