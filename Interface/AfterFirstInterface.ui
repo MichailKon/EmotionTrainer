@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
+    <width>791</width>
     <height>524</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>641</width>
+     <width>761</width>
      <height>411</height>
     </rect>
    </property>
@@ -27,6 +27,12 @@
      <family>Calibri</family>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::NoEditTriggers</set>
+   </property>
+   <property name="gridStyle">
+    <enum>Qt::SolidLine</enum>
    </property>
    <property name="rowCount">
     <number>10</number>
@@ -41,7 +47,7 @@
     <bool>false</bool>
    </attribute>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>150</number>
+    <number>180</number>
    </attribute>
    <attribute name="verticalHeaderHighlightSections">
     <bool>true</bool>
@@ -99,7 +105,7 @@
   <widget class="QPushButton" name="ToAfterFirst">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>320</x>
      <y>450</y>
      <width>131</width>
      <height>51</height>
