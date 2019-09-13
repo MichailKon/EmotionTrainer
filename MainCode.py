@@ -194,7 +194,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         user_answer = self.get_selected_button()
         if len(self.statistics) >= 1:
             self.statistics[-1].append(user_answer)
-            self.statistics[-1].append((dt.datetime.now() - self.last_answer).total_seconds())
+            self.statistics[-1].append(round((dt.datetime.now() - self.last_answer).total_seconds(), 1))
         if self.shown_images > 10:
             self.to_statistics()
             return
