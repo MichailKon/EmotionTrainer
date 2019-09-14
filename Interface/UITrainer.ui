@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>600</height>
+    <width>799</width>
+    <height>740</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="SetNextFace">
    <property name="geometry">
     <rect>
-     <x>780</x>
-     <y>480</y>
+     <x>550</x>
+     <y>620</y>
      <width>201</width>
      <height>61</height>
     </rect>
@@ -169,8 +169,8 @@ QPushButton:pressed
     <rect>
      <x>30</x>
      <y>60</y>
-     <width>720</width>
-     <height>480</height>
+     <width>504</width>
+     <height>672</height>
     </rect>
    </property>
    <property name="frameShape">
@@ -186,7 +186,7 @@ QPushButton:pressed
   <widget class="QGroupBox" name="Emotion">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>540</x>
      <y>50</y>
      <width>231</width>
      <height>431</height>
@@ -495,8 +495,8 @@ QPushButton:pressed
   <widget class="QPushButton" name="ToMainWindow">
    <property name="geometry">
     <rect>
-     <x>870</x>
-     <y>550</y>
+     <x>550</x>
+     <y>690</y>
      <width>121</width>
      <height>41</height>
     </rect>

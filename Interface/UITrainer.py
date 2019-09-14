@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'UITrainer.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.1
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -12,9 +13,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1000, 600)
+        Dialog.resize(799, 740)
         self.SetNextFace = QtWidgets.QPushButton(Dialog)
-        self.SetNextFace.setGeometry(QtCore.QRect(780, 480, 201, 61))
+        self.SetNextFace.setGeometry(QtCore.QRect(550, 620, 201, 61))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 170, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -85,13 +86,13 @@ class Ui_Dialog(object):
 "}")
         self.SetNextFace.setObjectName("SetNextFace")
         self.Image = QtWidgets.QLabel(Dialog)
-        self.Image.setGeometry(QtCore.QRect(30, 60, 720, 480))
+        self.Image.setGeometry(QtCore.QRect(30, 60, 504, 672))
         self.Image.setFrameShape(QtWidgets.QFrame.Box)
         self.Image.setLineWidth(2)
         self.Image.setText("")
         self.Image.setObjectName("Image")
         self.Emotion = QtWidgets.QGroupBox(Dialog)
-        self.Emotion.setGeometry(QtCore.QRect(760, 50, 231, 431))
+        self.Emotion.setGeometry(QtCore.QRect(540, 50, 231, 431))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
@@ -198,7 +199,7 @@ class Ui_Dialog(object):
         self.Scorn.setAutoExclusive(False)
         self.Scorn.setObjectName("Scorn")
         self.ToMainWindow = QtWidgets.QPushButton(Dialog)
-        self.ToMainWindow.setGeometry(QtCore.QRect(870, 550, 121, 41))
+        self.ToMainWindow.setGeometry(QtCore.QRect(550, 690, 121, 41))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
@@ -232,5 +233,3 @@ class Ui_Dialog(object):
         self.Neutral.setText(_translate("Dialog", "Neutral"))
         self.Scorn.setText(_translate("Dialog", "Scorn"))
         self.ToMainWindow.setText(_translate("Dialog", "Back"))
-
-

@@ -213,7 +213,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         path_to_image = os.path.join(os.getcwd(), 'Emotions', self.now_emotion, self.now_emotion + num_emotion + '.jpg')
         image = QtGui.QPixmap(path_to_image)
         temp = QtGui.QTransform().rotate(90)
-        image = image.scaled(QtCore.QSize(480, 720)).transformed(temp)
+        image = image.scaled(QtCore.QSize(672, 504)).transformed(temp)
         self.ui.Image.setPixmap(image)
         self.ui.Progress.setValue(self.ui.Progress.value() + 10)
         self.statistics[-1].append(path_to_image)
