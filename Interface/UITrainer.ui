@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>780</x>
-     <y>470</y>
+     <y>480</y>
      <width>201</width>
      <height>61</height>
     </rect>
@@ -189,7 +189,7 @@ QPushButton:pressed
      <x>760</x>
      <y>50</y>
      <width>231</width>
-     <height>401</height>
+     <height>431</height>
     </rect>
    </property>
    <property name="font">
@@ -457,11 +457,45 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QRadioButton" name="Neutral_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>390</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>Scorn</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+    <property name="autoExclusive">
+     <bool>false</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="ToMainWindow">
    <property name="geometry">
     <rect>
-     <x>860</x>
+     <x>870</x>
      <y>550</y>
      <width>121</width>
      <height>41</height>

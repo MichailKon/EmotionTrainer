@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'UITrainer.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.1
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -14,7 +15,7 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1000, 600)
         self.SetNextFace = QtWidgets.QPushButton(Dialog)
-        self.SetNextFace.setGeometry(QtCore.QRect(780, 470, 201, 61))
+        self.SetNextFace.setGeometry(QtCore.QRect(780, 480, 201, 61))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 170, 0))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -91,7 +92,7 @@ class Ui_Dialog(object):
         self.Image.setText("")
         self.Image.setObjectName("Image")
         self.Emotion = QtWidgets.QGroupBox(Dialog)
-        self.Emotion.setGeometry(QtCore.QRect(760, 50, 231, 401))
+        self.Emotion.setGeometry(QtCore.QRect(760, 50, 231, 431))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
@@ -186,8 +187,19 @@ class Ui_Dialog(object):
         self.Neutral.setIconSize(QtCore.QSize(40, 40))
         self.Neutral.setAutoExclusive(False)
         self.Neutral.setObjectName("Neutral")
+        self.Neutral_2 = QtWidgets.QRadioButton(self.Emotion)
+        self.Neutral_2.setGeometry(QtCore.QRect(10, 390, 191, 41))
+        font = QtGui.QFont()
+        font.setFamily("Calibri")
+        font.setPointSize(15)
+        self.Neutral_2.setFont(font)
+        self.Neutral_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Neutral_2.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.Neutral_2.setIconSize(QtCore.QSize(40, 40))
+        self.Neutral_2.setAutoExclusive(False)
+        self.Neutral_2.setObjectName("Neutral_2")
         self.ToMainWindow = QtWidgets.QPushButton(Dialog)
-        self.ToMainWindow.setGeometry(QtCore.QRect(860, 550, 121, 41))
+        self.ToMainWindow.setGeometry(QtCore.QRect(870, 550, 121, 41))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
@@ -219,6 +231,5 @@ class Ui_Dialog(object):
         self.Sad.setText(_translate("Dialog", "Sad"))
         self.Surprised.setText(_translate("Dialog", "Surprised"))
         self.Neutral.setText(_translate("Dialog", "Neutral"))
+        self.Neutral_2.setText(_translate("Dialog", "Scorn"))
         self.ToMainWindow.setText(_translate("Dialog", "Back"))
-
-
