@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'AfterFirstInterface.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -13,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(791, 524)
+        Form.resize(790, 520)
         self.Statistics = QtWidgets.QTableWidget(Form)
         self.Statistics.setGeometry(QtCore.QRect(10, 10, 761, 411))
         font = QtGui.QFont()
@@ -38,21 +37,21 @@ class Ui_Form(object):
         self.Statistics.horizontalHeader().setDefaultSectionSize(180)
         self.Statistics.verticalHeader().setHighlightSections(True)
         self.ToMainWindow = QtWidgets.QPushButton(Form)
-        self.ToMainWindow.setGeometry(QtCore.QRect(40, 450, 131, 51))
+        self.ToMainWindow.setGeometry(QtCore.QRect(40, 460, 130, 51))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
         self.ToMainWindow.setFont(font)
         self.ToMainWindow.setObjectName("ToMainWindow")
         self.ToAfterFirst = QtWidgets.QPushButton(Form)
-        self.ToAfterFirst.setGeometry(QtCore.QRect(320, 450, 131, 51))
+        self.ToAfterFirst.setGeometry(QtCore.QRect(560, 460, 130, 51))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(12)
         self.ToAfterFirst.setFont(font)
         self.ToAfterFirst.setObjectName("ToAfterFirst")
         self.Image = QtWidgets.QLabel(Form)
-        self.Image.setGeometry(QtCore.QRect(130, 40, 400, 350))
+        self.Image.setGeometry(QtCore.QRect(10, 10, 504, 672))
         self.Image.setText("")
         self.Image.setObjectName("Image")
 
@@ -72,3 +71,5 @@ class Ui_Form(object):
         item.setText(_translate("Form", "Time"))
         self.ToMainWindow.setText(_translate("Form", "Back"))
         self.ToAfterFirst.setText(_translate("Form", "Back"))
+
+

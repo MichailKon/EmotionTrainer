@@ -206,6 +206,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
             self.mixer.music.load(os.path.join(os.getcwd(), 'Music', self.now_emotion + ".mp3"))
             self.mixer.music.play()
         except pygame.error:
+            print(self.now_emotion)
             pass  # TODO
 
         cnt_photos = len(os.listdir(os.path.join(os.getcwd(), 'Emotions', self.now_emotion)))
@@ -288,6 +289,8 @@ class AfterFirstApp(QtWidgets.QWidget):
         self.make_table()
         self.ui.ToAfterFirst.setVisible(False)
         self.ui.Image.setVisible(False)
+        # self.sx = self.x()
+        # self.sy = self.y()
 
     def translating(self):
         self.ui.ToMainWindow.setText(WORDS[language][self.ui.ToMainWindow.text()])
@@ -315,10 +318,12 @@ class AfterFirstApp(QtWidgets.QWidget):
 
     def show_photo(self):
         num_photo = str(int(self.sender().text().split()[-1]) - 1)
-        photo = self.statistics[int(num_photo)][1] + str((int(num_photo) + 1)) + '.jpg'
-        path_to_image = os.path.join(os.getcwd(), 'Emotions', self.statistics[int(num_photo)][1], photo)
+        path_to_image = self.statistics[int(num_photo)][0]
         image = QtGui.QPixmap(path_to_image)
-        image = image.scaled(QtCore.QSize(400, 350))
+        temp = QtGui.QTransform().rotate(90)
+        image = image.scaled(QtCore.QSize(672, 504)).transformed(temp)
+
+        self.setGeometry(self.x(), self.y(), 700, 750)
         self.ui.Image.setVisible(True)
         self.ui.ToAfterFirst.setVisible(True)
         self.ui.Statistics.setVisible(False)
@@ -333,6 +338,7 @@ class AfterFirstApp(QtWidgets.QWidget):
         self.is_opened_main.show()
 
     def to_after_first(self):
+        self.setGeometry(self.x(), self.y(), 790, 520)
         self.ui.Image.setVisible(False)
         self.ui.ToAfterFirst.setVisible(False)
         self.ui.Statistics.setVisible(True)
