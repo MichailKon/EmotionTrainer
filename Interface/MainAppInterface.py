@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'MainInterface.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -56,5 +55,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.ToSecondTrainer.setText(_translate("Form", "Второй тренажер"))
-        self.ToFirstTrainer.setText(_translate("Form", "Первый тренажер"))
+        self.ToSecondTrainer.setText(_translate("Form", "Покажи эмоцию"))
+        self.ToFirstTrainer.setText(_translate("Form", "Угадай эмоцию"))
+
+

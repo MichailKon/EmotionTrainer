@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'UITrainer.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -187,17 +186,17 @@ class Ui_Dialog(object):
         self.Neutral.setIconSize(QtCore.QSize(40, 40))
         self.Neutral.setAutoExclusive(False)
         self.Neutral.setObjectName("Neutral")
-        self.Neutral_2 = QtWidgets.QRadioButton(self.Emotion)
-        self.Neutral_2.setGeometry(QtCore.QRect(10, 390, 191, 41))
+        self.Scorn = QtWidgets.QRadioButton(self.Emotion)
+        self.Scorn.setGeometry(QtCore.QRect(10, 390, 191, 41))
         font = QtGui.QFont()
         font.setFamily("Calibri")
         font.setPointSize(15)
-        self.Neutral_2.setFont(font)
-        self.Neutral_2.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.Neutral_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.Neutral_2.setIconSize(QtCore.QSize(40, 40))
-        self.Neutral_2.setAutoExclusive(False)
-        self.Neutral_2.setObjectName("Neutral_2")
+        self.Scorn.setFont(font)
+        self.Scorn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.Scorn.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.Scorn.setIconSize(QtCore.QSize(40, 40))
+        self.Scorn.setAutoExclusive(False)
+        self.Scorn.setObjectName("Scorn")
         self.ToMainWindow = QtWidgets.QPushButton(Dialog)
         self.ToMainWindow.setGeometry(QtCore.QRect(870, 550, 121, 41))
         font = QtGui.QFont()
@@ -231,5 +230,7 @@ class Ui_Dialog(object):
         self.Sad.setText(_translate("Dialog", "Sad"))
         self.Surprised.setText(_translate("Dialog", "Surprised"))
         self.Neutral.setText(_translate("Dialog", "Neutral"))
-        self.Neutral_2.setText(_translate("Dialog", "Scorn"))
+        self.Scorn.setText(_translate("Dialog", "Scorn"))
         self.ToMainWindow.setText(_translate("Dialog", "Back"))
+
+

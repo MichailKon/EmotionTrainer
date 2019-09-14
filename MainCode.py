@@ -91,10 +91,10 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
         # Magic with picture
         face = self.faces[number]
         face = self.frame[face[1]:(face[1] + face[3]), face[0]:(face[0] + face[2])]
-        face = np.array((Image.fromarray(face).convert('1')).resize((IMG_SIZE, IMG_SIZE), Image.ANTIALIAS))
+        face = np.array((Image.fromarray(face).convert('L')).resize((IMG_SIZE, IMG_SIZE), Image.ANTIALIAS)) / 255
         face = face.reshape((1, IMG_SIZE, IMG_SIZE, 1))
-        predictions = self.model.predict(face).reshape(CNT_CLASSES).tolist()
-        predictions = [(CLASSES[language][i], predictions[i]) for i in range(CNT_CLASSES) if predictions[i] >= 0.1]
+        predictions = self.model.predict(face).reshape(CNT_CLASSES - 1).tolist()
+        predictions = [(CLASSES[language][i], predictions[i]) for i in range(CNT_CLASSES - 1) if predictions[i] >= 0.1]
         predictions = [i[0] for i in sorted(predictions, reverse=True)]
         self.ui.Result.setText(",".join(predictions))
 
@@ -189,7 +189,6 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.ui.Emotion.setTitle(WORDS[language][self.ui.Emotion.title()])
 
     def next_image(self):
-
         self.shown_images += 1
         user_answer = self.get_selected_button()
         if len(self.statistics) >= 1:
@@ -202,15 +201,19 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.true_images += user_answer == self.now_emotion
         self.now_emotion = random.choice(CLASSES['en'])
 
-        self.mixer.init()
-        self.mixer.music.load(os.path.join(os.getcwd(), 'Music', self.now_emotion + ".mp3"))
-        self.mixer.music.play()
+        try:
+            self.mixer.init()
+            self.mixer.music.load(os.path.join(os.getcwd(), 'Music', self.now_emotion + ".mp3"))
+            self.mixer.music.play()
+        except pygame.error:
+            pass  # TODO
 
         cnt_photos = len(os.listdir(os.path.join(os.getcwd(), 'Emotions', self.now_emotion)))
         num_emotion = str(random.randint(1, cnt_photos))
         path_to_image = os.path.join(os.getcwd(), 'Emotions', self.now_emotion, self.now_emotion + num_emotion + '.jpg')
         image = QtGui.QPixmap(path_to_image)
-        image = image.scaled(QtCore.QSize(400, 350))
+        temp = QtGui.QTransform().rotate(90)
+        image = image.scaled(QtCore.QSize(480, 720)).transformed(temp)
         self.ui.Image.setPixmap(image)
         self.ui.Progress.setValue(self.ui.Progress.value() + 10)
         self.statistics[-1].append(path_to_image)
@@ -237,7 +240,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         for i in CLASSES['en']:
             command = 'self.ui.{}.isChecked() == 1'
             if eval(command.format(i)):
-                return i
+                    return i
 
     def make_one_choice(self, emotion=None):
         for i in CLASSES['en']:
@@ -265,6 +268,9 @@ class UserRecognizesApp(QtWidgets.QWidget):
 
     def neutral_clicked(self):
         self.make_one_choice('Neutral')
+
+    def scorn_clicked(self):
+        self.make_one_choice('Scorn')
 
 
 class AfterFirstApp(QtWidgets.QWidget):

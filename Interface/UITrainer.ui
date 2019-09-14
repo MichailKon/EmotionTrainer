@@ -457,7 +457,7 @@ QPushButton:pressed
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QRadioButton" name="Neutral_2">
+   <widget class="QRadioButton" name="Scorn">
     <property name="geometry">
      <rect>
       <x>10</x>
