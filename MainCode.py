@@ -207,7 +207,6 @@ class UserRecognizesApp(QtWidgets.QWidget):
             self.mixer.music.play()
         except pygame.error:
             print(self.now_emotion)
-            pass  # TODO
 
         cnt_photos = len(os.listdir(os.path.join(os.getcwd(), 'Emotions', self.now_emotion)))
         num_emotion = str(random.randint(1, cnt_photos))
@@ -241,7 +240,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         for i in CLASSES['en']:
             command = 'self.ui.{}.isChecked() == 1'
             if eval(command.format(i)):
-                    return i
+                return i
 
     def make_one_choice(self, emotion=None):
         for i in CLASSES['en']:
