@@ -18,6 +18,7 @@ from constants import *
 
 language = 'ru'
 ind = 0
+position = (200, 200)
 
 
 class EmotionRecognitionApp(QtWidgets.QWidget):
@@ -37,6 +38,7 @@ class EmotionRecognitionApp(QtWidgets.QWidget):
         self.ui.ToMainWindow.clicked.connect(self.open_main)
         self.ui.user_answered.clicked.connect(self.recognize_emotion)
         # Making form
+        self.move(position[0], position[1])
         self.ui.Result.setText('')
         self.ui.UserInput.setReadOnly(True)
         self.ui.Result.setAlignment(QtCore.Qt.AlignCenter)
@@ -122,6 +124,8 @@ class MainWindowApp(QtWidgets.QWidget):
         self.ui.ToFirstTrainer.clicked.connect(self.open_rezognizes)
         self.ui.Language.setIcon(QtGui.QIcon(os.path.join(os.getcwd(), 'Icons', 'Eng.png')))
         self.ui.Language.setIconSize(QtCore.QSize(45, 45))
+        # Making form
+        self.move(position[0], position[1])
 
     def swap_language(self):
         global language, ind
@@ -164,10 +168,12 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.ui = UserRecognizesAI.Ui_Dialog()
         self.ui.setupUi(self)
         self.is_opened_main = None
+        self.used_emotions = set()
         self.shown_images = 0
         self.true_images = -1
         self.last_answer = None
         self.statistics = []
+        self.path_to_image = ''
         self.is_opened_statistics = None
         self.music_filename = None
         self.mixer = pygame.mixer
@@ -180,6 +186,7 @@ class UserRecognizesApp(QtWidgets.QWidget):
         self.ui.Progress.setMinimum(0)
         self.ui.Progress.setMaximum(100)
         self.ui.Progress.setValue(0)
+        self.move(position[0], position[1])
 
     def translating(self):
         self.ui.ToMainWindow.setText(WORDS[language][self.ui.ToMainWindow.text()])
@@ -187,6 +194,13 @@ class UserRecognizesApp(QtWidgets.QWidget):
             exec("self.ui.{}.setText(CLASSES[language][CLASSES['en'].index(i)])".format(i))
         self.ui.SetNextFace.setText(WORDS[language][self.ui.SetNextFace.text()])
         self.ui.Emotion.setTitle(WORDS[language][self.ui.Emotion.title()])
+
+    def take_emotion(self):
+        self.now_emotion = random.choice(CLASSES['en'])
+        cnt_photos = len(os.listdir(os.path.join(os.getcwd(), 'Emotions', self.now_emotion)))
+        num_emotion = str(random.randint(1, cnt_photos))
+        self.path_to_image = os.path.join(os.getcwd(), 'Emotions', self.now_emotion,
+                                          self.now_emotion + num_emotion + '.jpg')
 
     def next_image(self):
         self.shown_images += 1
@@ -199,7 +213,10 @@ class UserRecognizesApp(QtWidgets.QWidget):
             return
         self.statistics.append([])
         self.true_images += user_answer == self.now_emotion
-        self.now_emotion = random.choice(CLASSES['en'])
+
+        self.take_emotion()
+        while self.path_to_image in self.used_emotions:
+            self.take_emotion()
 
         try:
             self.mixer.init()
@@ -207,16 +224,14 @@ class UserRecognizesApp(QtWidgets.QWidget):
             self.mixer.music.play()
         except pygame.error:
             print(self.now_emotion)
+            pass
 
-        cnt_photos = len(os.listdir(os.path.join(os.getcwd(), 'Emotions', self.now_emotion)))
-        num_emotion = str(random.randint(1, cnt_photos))
-        path_to_image = os.path.join(os.getcwd(), 'Emotions', self.now_emotion, self.now_emotion + num_emotion + '.jpg')
-        image = QtGui.QPixmap(path_to_image)
+        image = QtGui.QPixmap(self.path_to_image)
         temp = QtGui.QTransform().rotate(90)
         image = image.scaled(QtCore.QSize(672, 504)).transformed(temp)
         self.ui.Image.setPixmap(image)
         self.ui.Progress.setValue(self.ui.Progress.value() + 10)
-        self.statistics[-1].append(path_to_image)
+        self.statistics[-1].append(self.path_to_image)
         self.statistics[-1].append(self.now_emotion)
         self.last_answer = dt.datetime.now()
 
@@ -288,6 +303,7 @@ class AfterFirstApp(QtWidgets.QWidget):
         self.make_table()
         self.ui.ToAfterFirst.setVisible(False)
         self.ui.Image.setVisible(False)
+        self.move(position[0], position[1])
         # self.sx = self.x()
         # self.sy = self.y()
 
@@ -321,8 +337,7 @@ class AfterFirstApp(QtWidgets.QWidget):
         image = QtGui.QPixmap(path_to_image)
         temp = QtGui.QTransform().rotate(90)
         image = image.scaled(QtCore.QSize(672, 504)).transformed(temp)
-
-        self.setGeometry(self.x(), self.y(), 700, 750)
+        # TODO ANOTHER SIZE AND COMPILE THE FORM
         self.ui.Image.setVisible(True)
         self.ui.ToAfterFirst.setVisible(True)
         self.ui.Statistics.setVisible(False)
@@ -337,7 +352,7 @@ class AfterFirstApp(QtWidgets.QWidget):
         self.is_opened_main.show()
 
     def to_after_first(self):
-        self.setGeometry(self.x(), self.y(), 790, 520)
+        self.move(position[0], position[1])
         self.ui.Image.setVisible(False)
         self.ui.ToAfterFirst.setVisible(False)
         self.ui.Statistics.setVisible(True)
