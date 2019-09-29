@@ -337,7 +337,7 @@ class AfterFirstApp(QtWidgets.QWidget):
         image = QtGui.QPixmap(path_to_image)
         temp = QtGui.QTransform().rotate(90)
         image = image.scaled(QtCore.QSize(672, 504)).transformed(temp)
-        # TODO ANOTHER SIZE AND COMPILE THE FORM
+        self.setGeometry(self.x(), self.y(), 700, 750)
         self.ui.Image.setVisible(True)
         self.ui.ToAfterFirst.setVisible(True)
         self.ui.Statistics.setVisible(False)
@@ -352,6 +352,7 @@ class AfterFirstApp(QtWidgets.QWidget):
         self.is_opened_main.show()
 
     def to_after_first(self):
+        self.setGeometry(self.x(), self.y(), 790, 520)
         self.move(position[0], position[1])
         self.ui.Image.setVisible(False)
         self.ui.ToAfterFirst.setVisible(False)
