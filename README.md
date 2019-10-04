@@ -1,1 +1,1 @@
-# KvantoriadaPython
+# Emotion Trainer
