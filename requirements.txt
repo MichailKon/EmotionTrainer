@@ -2,5 +2,5 @@ numpy==1.17.1
 Keras==2.2.5
 pygame==1.9.6
 opencv_python==4.1.0.25
-Pillow==7.0.0
+Pillow==9.3.0
 PyQt5==5.14.1
